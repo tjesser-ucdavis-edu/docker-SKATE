@@ -32,7 +32,7 @@ WORKDIR /home/seismo
 
 RUN git clone 'https://github.com/retrievertech/seismogram-app.git'
 
-COPY seismo-server-start.sh seismo-server-start.sh
+COPY run-seismo-server.sh run-seismo-server.sh
 
 COPY patches/ patches/
 
