@@ -50,4 +50,4 @@ WORKDIR /home/seismo/seismogram-app/server
 
 RUN npm install
 
-CMD [ "/home/seismo/seismo-server-start.sh" ]
+CMD [ "/home/seismo/run-seismo-server.sh" ]
