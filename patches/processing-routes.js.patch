@@ -1,0 +1,13 @@
+diff --git a/server/processing-routes.js b/server/processing-routes.js
+index 103ceb2..33fb2f1 100644
+--- a/server/processing-routes.js
++++ b/server/processing-routes.js
+@@ -14,7 +14,7 @@ var auth = require("./auth");
+ var pipelinePath = __dirname + "/../../seismogram-pipeline";
+ 
+ var connect = function(cb) {
+-  mongo.connect("mongodb://localhost/seismo", cb);
++  mongo.connect("mongodb://seismo-database/seismo", cb);
+ };
+ 
+ function setStatus(filename, status, callback) {

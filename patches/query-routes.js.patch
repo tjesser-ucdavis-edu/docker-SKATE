@@ -1,0 +1,22 @@
+diff --git a/server/query-routes.js b/server/query-routes.js
+index 49feae7..3f83c1c 100644
+--- a/server/query-routes.js
++++ b/server/query-routes.js
+@@ -6,7 +6,7 @@ var queryCache = require("./query-cache");
+ var auth = require("./auth");
+ 
+ var connect = function(cb) {
+-  mongo.connect("mongodb://localhost/seismo", cb);
++  mongo.connect("mongodb://seismo-database/seismo", cb);
+ };
+ 
+ router.get("/stations", function(req, res, next) {
+@@ -68,7 +68,7 @@ router.get("/files", function(req, res, next) {
+     res.send(hit);
+     return;
+   }
+-  
++
+   var query = constructMongoQuery(req);
+ 
+   // result paging
