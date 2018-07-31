@@ -1,0 +1,72 @@
+diff --git a/client/src/browse/StationMap.svc.js b/client/src/browse/StationMap.svc.js
+index cdc2183..7fbe48a 100644
+--- a/client/src/browse/StationMap.svc.js
++++ b/client/src/browse/StationMap.svc.js
+@@ -1,5 +1,3 @@
+-import {Leaflet} from "bower_components/redfish-util/lib/Leaflet.js";
+-
+ var L = window.L;
+ 
+ export class StationMap {
+@@ -12,29 +10,20 @@ export class StationMap {
+   }
+ 
+   init(id) {
+-    var map = window.stationmap = this.map = new Leaflet(id, null, {
++    this.leafletMap = new L.Map(id, {
+       minZoom: 1,
+       maxZoom: 5,
+       maxBounds: [[-90, -180], [90, 180]]
+     });
+-
+-    this.leafletMap = map.leafletMap;
+-
+-    map.leafletMap.setView(new L.LatLng(0,0), 3);
+-    map.addLayers();
+-    map.setBaseLayer(map.baseLayers[3]);
+-
+-    // see https://www.mapbox.com/developers/api/maps/ for other tile styles
+-    // e.g. try replacing mapbox.outdoors with mapbox.light to test a different style
+-
+-    map.setBaseLayer({
+-      name: "Seismogram",
+-      leafletLayer: new L.TileLayer("http://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmVubmxpY2giLCJhIjoieUxHOHQyNCJ9.VLDDBTTdzeHKJvR5ABYaLA", {
+-        zIndex: 1,
+-        zoomAnimation: false,
+-        opacity: 0.4
+-      })
++    L.control.scale().addTo(this.leafletMap);
++    this.leafletMap.setView(new L.LatLng(0,0), 3);
++    let baseLayer = new L.TileLayer("http://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmVubmxpY2giLCJhIjoieUxHOHQyNCJ9.VLDDBTTdzeHKJvR5ABYaLA", {
++      zIndex: 1,
++      zoomAnimation: false,
++      opacity: 0.4
+     });
++    this.leafletMap.addLayer(baseLayer);
++    this.leafletMap.fire("baselayerchange", { layer: baseLayer });
+   }
+ 
+   updateBounds() {
+@@ -43,7 +32,7 @@ export class StationMap {
+ 
+   renderQueryData() {
+     // First, erase all existing markers
+-    this.stationMarkers.forEach((marker) => this.map.leafletMap.removeLayer(marker));
++    this.stationMarkers.forEach((marker) => this.leafletMap.removeLayer(marker));
+     this.stationMarkers = [];
+ 
+     window._.keys(this.QueryData.filesQueryData.stations).forEach((stationId) => {
+@@ -64,11 +53,11 @@ export class StationMap {
+       });
+ 
+       // Make sure you don't clobber double-click for zooming
+-      marker.on("dblclick", () => this.map.leafletMap.zoomIn());
++      marker.on("dblclick", () => this.leafletMap.zoomIn());
+       // Save the marker so we can get rid of it on the next search
+       this.stationMarkers.push(marker);
+       // Add it to the map
+-      marker.addTo(this.map.leafletMap);
++      marker.addTo(this.leafletMap);
+     });
+   }
+ 

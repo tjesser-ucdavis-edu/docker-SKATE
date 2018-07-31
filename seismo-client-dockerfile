@@ -1,0 +1,73 @@
+FROM ubuntu:16.04
+
+RUN apt update -y && apt install -y \
+  apache2 \
+  build-essential \
+  git \
+  libcairo2-dev \
+  libgif-dev \
+  libjpeg-dev \
+  libpango1.0-dev \
+  librsvg2-dev \
+  mongodb \
+  nodejs \
+  npm \
+  pkg-config
+
+RUN adduser \
+  --quiet \
+  seismo
+
+RUN npm install \
+  --global \
+  bower
+
+RUN ln -s \
+  /usr/bin/nodejs \
+  /usr/bin/node
+
+USER seismo
+
+WORKDIR /home/seismo
+
+RUN mkdir mongo-seismo
+
+RUN mkdir mongo-logs
+
+RUN git clone 'https://github.com/retrievertech/seismogram-app.git'
+
+COPY run-seismo-app.sh run-seismo-app.sh
+
+COPY patches/ patches/
+
+RUN patch 'seismogram-app/server/package.json' 'patches/package.json.patch'
+
+RUN patch 'seismogram-app/client/bower.json' 'patches/bower.json.patch'
+
+RUN patch 'seismogram-app/client/src/browse/StationMap.svc.js' 'patches/StationMap.svc.js.patch'
+
+WORKDIR /home/seismo/seismogram-app/data-tools
+
+RUN npm install
+
+RUN nodejs jsonize.js
+
+WORKDIR /home/seismo/seismogram-app/server
+
+RUN npm install
+
+WORKDIR /home/seismo/seismogram-app/client
+
+RUN bower install
+
+USER root
+
+COPY seismogram-app-client.conf /etc/apache2/sites-available/
+
+RUN a2dissite 000-default
+
+RUN a2ensite seismogram-app-client
+
+USER seismo
+
+CMD [ "/home/seismo/run-seismo-app.sh" ]
