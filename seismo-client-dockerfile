@@ -62,11 +62,11 @@ RUN bower install
 
 USER root
 
-COPY seismogram-app-client.conf /etc/apache2/sites-available/
+COPY seismo-client-apache.conf /etc/apache2/sites-available/
 
 RUN a2dissite 000-default
 
-RUN a2ensite seismogram-app-client
+RUN a2ensite seismo-client-apache
 
 USER seismo
 
