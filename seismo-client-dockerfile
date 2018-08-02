@@ -36,7 +36,7 @@ RUN mkdir mongo-logs
 
 RUN git clone 'https://github.com/retrievertech/seismogram-app.git'
 
-COPY run-seismo-app.sh run-seismo-app.sh
+COPY run-seismo-client.sh run-seismo-client.sh
 
 COPY patches/ patches/
 
