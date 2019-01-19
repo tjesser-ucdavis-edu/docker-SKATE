@@ -34,7 +34,7 @@ RUN mkdir mongo-seismo
 
 RUN mkdir mongo-logs
 
-RUN git clone 'https://github.com/retrievertech/seismogram-app.git'
+COPY submodules/seismogram-app .
 
 COPY run-seismo-client.sh run-seismo-client.sh
 

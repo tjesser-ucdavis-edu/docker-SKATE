@@ -1,0 +1,3 @@
+[submodule "submodules/seismogram-app"]
+	path = submodules/seismogram-app
+	url = https://github.com/retrievertech/seismogram-app.git

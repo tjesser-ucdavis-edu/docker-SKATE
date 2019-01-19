@@ -30,7 +30,7 @@ USER seismo
 
 WORKDIR /home/seismo
 
-RUN git clone 'https://github.com/retrievertech/seismogram-app.git'
+COPY submodules/seismogram-app .
 
 COPY run-seismo-server.sh run-seismo-server.sh
 
