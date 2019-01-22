@@ -34,8 +34,6 @@ COPY patches/ patches/
 
 RUN patch 'seismogram-app/data-tools/mongo-import.sh' 'patches/mongo-import.sh.patch'
 
-RUN patch 'seismogram-app/server/package.json' 'patches/package.json.patch'
-
 RUN patch 'seismogram-app/server/processing-routes.js' 'patches/processing-routes.js.patch'
 
 RUN patch 'seismogram-app/server/query-routes.js' 'patches/query-routes.js.patch'

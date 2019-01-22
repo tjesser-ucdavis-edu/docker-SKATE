@@ -36,11 +36,6 @@ COPY run-seismo-client.sh run-seismo-client.sh
 
 COPY patches/ patches/
 
-RUN patch 'seismogram-app/server/package.json' 'patches/package.json.patch'
-
-RUN patch 'seismogram-app/client/bower.json' 'patches/bower.json.patch'
-
-RUN patch 'seismogram-app/client/src/browse/StationMap.svc.js' 'patches/StationMap.svc.js.patch'
 
 WORKDIR /home/seismo/seismogram-app/data-tools
 
