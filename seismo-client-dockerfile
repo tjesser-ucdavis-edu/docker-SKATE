@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN apt update -y && apt install -y \
   apache2 \
@@ -21,10 +21,6 @@ RUN adduser \
 RUN npm install \
   --global \
   bower
-
-RUN ln -s \
-  /usr/bin/nodejs \
-  /usr/bin/node
 
 USER seismo
 
