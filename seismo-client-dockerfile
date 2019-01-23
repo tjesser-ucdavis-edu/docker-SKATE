@@ -1,6 +1,9 @@
 FROM ubuntu:18.04
 
-RUN apt update -y && apt install -y \
+RUN apt update -y && \
+  DEBIAN_FRONTEND='noninteractive' \
+  DEBCONF_NONINTERACTIVE_SEEN='true' \
+  apt install -y \
   apache2 \
   build-essential \
   git \
