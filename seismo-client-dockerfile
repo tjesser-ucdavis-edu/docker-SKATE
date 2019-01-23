@@ -67,4 +67,4 @@ RUN a2ensite seismo-client-apache
 
 USER seismo
 
-CMD [ "/home/seismo/run-seismo-app.sh" ]
+CMD [ "/home/seismo/run-seismo-client.sh" ]
