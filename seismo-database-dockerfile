@@ -22,9 +22,9 @@ RUN useradd \
   --user-group \
   seismo
 
-USER seismo
-
 WORKDIR /home/seismo
+
+USER seismo
 
 RUN mkdir mongo-seismo
 

@@ -26,15 +26,17 @@ RUN npm install \
   --global \
   bower
 
-USER seismo
-
 WORKDIR /home/seismo
 
-COPY submodules/seismogram-app .
+COPY submodules/seismogram-app seismogram-app
+
+COPY patches/ patches/
 
 COPY run-seismo-server.sh run-seismo-server.sh
 
-COPY patches/ patches/
+RUN chown --recursive 'seismo:seismo' '/home/seismo'
+
+USER seismo
 
 RUN patch 'seismogram-app/data-tools/mongo-import.sh' 'patches/mongo-import.sh.patch'
 
