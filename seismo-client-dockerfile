@@ -30,9 +30,7 @@ USER seismo
 
 WORKDIR /home/seismo
 
-RUN mkdir mongo-seismo
 
-RUN mkdir mongo-logs
 
 COPY submodules/seismogram-app .
 
