@@ -40,6 +40,8 @@ USER seismo
 
 RUN patch 'seismogram-app/data-tools/mongo-import.sh' 'patches/mongo-import.sh.patch'
 
+RUN patch 'seismogram-app/client/bower.json' 'patches/bower.json.patch'
+
 WORKDIR /home/seismo/seismogram-app/data-tools
 
 RUN npm install
