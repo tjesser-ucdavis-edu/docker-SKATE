@@ -30,7 +30,9 @@ USER seismo
 
 WORKDIR /home/seismo
 
+COPY submodules/seismogram-app seismogram-app
 
+COPY patches/ patches/
 
 COPY submodules/seismogram-app .
 
@@ -38,6 +40,7 @@ COPY run-seismo-client.sh run-seismo-client.sh
 
 COPY patches/ patches/
 
+RUN patch 'seismogram-app/data-tools/mongo-import.sh' 'patches/mongo-import.sh.patch'
 
 WORKDIR /home/seismo/seismogram-app/data-tools
 
