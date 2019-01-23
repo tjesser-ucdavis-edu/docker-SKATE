@@ -52,7 +52,8 @@ RUN npm install
 
 WORKDIR /home/seismo/seismogram-app/client
 
-RUN bower install
+RUN GIT_DIR='/home/seismo/seismogram-app/submodules/seismogram-app' \
+  bower install
 
 USER root
 
