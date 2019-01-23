@@ -17,8 +17,9 @@ RUN apt update -y && \
   npm \
   pkg-config
 
-RUN adduser \
-  --quiet \
+RUN useradd \
+  --create-home \
+  --user-group \
   seismo
 
 RUN npm install \
