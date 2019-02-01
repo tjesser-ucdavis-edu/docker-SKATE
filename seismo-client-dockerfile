@@ -32,7 +32,7 @@ COPY submodules/seismogram-app seismogram-app
 
 COPY patches/ patches/
 
-COPY run-seismo-server.sh run-seismo-server.sh
+COPY run-seismo-client.sh run-seismo-client.sh
 
 RUN chown --recursive 'seismo:seismo' '/home/seismo'
 
