@@ -3,8 +3,8 @@ index 9c13720..57c9bb5 100644
 --- a/data-tools/mongo-import.sh
 +++ b/data-tools/mongo-import.sh
 @@ -1,3 +1,5 @@
-+alias mongo='mongo --host=seismo-database'
-+alias mongoimport='mongoimport --host=seismo-database'
++alias mongo='mongo --host=seismo-database-run'
++alias mongoimport='mongoimport --host=seismo-database-run'
  db=seismo && \
  mongo $db --eval "db.dropDatabase()" && \
  mongoimport --db=$db --collection=stations --jsonArray --file stations.json && \

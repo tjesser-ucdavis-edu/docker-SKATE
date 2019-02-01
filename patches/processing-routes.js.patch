@@ -7,7 +7,7 @@ index 103ceb2..33fb2f1 100644
  
  var connect = function(cb) {
 -  mongo.connect("mongodb://localhost/seismo", cb);
-+  mongo.connect("mongodb://seismo-database/seismo", cb);
++  mongo.connect("mongodb://seismo-database-run/seismo", cb);
  };
  
  function setStatus(filename, status, callback) {
