@@ -38,19 +38,7 @@ RUN chown --recursive 'seismo:seismo' '/home/seismo'
 
 USER seismo
 
-RUN patch 'seismogram-app/data-tools/mongo-import.sh' 'patches/mongo-import.sh.patch'
-
 RUN patch 'seismogram-app/client/bower.json' 'patches/bower.json.patch'
-
-WORKDIR /home/seismo/seismogram-app/data-tools
-
-RUN npm install
-
-RUN nodejs jsonize.js
-
-WORKDIR /home/seismo/seismogram-app/server
-
-RUN npm install
 
 WORKDIR /home/seismo/seismogram-app/client
 
