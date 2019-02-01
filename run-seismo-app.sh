@@ -4,7 +4,7 @@ set -e
 set -v
 set -x
 
-if [ ! docker network inspect seismo-app ]
+if ! docker network inspect seismo-app
 then
   docker network create seismo-app
 fi
