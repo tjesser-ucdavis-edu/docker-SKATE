@@ -15,6 +15,7 @@ docker ps \
   --filter 'name=seismo-client-run' \
   --quiet \
 | xargs \
+  --no-run-if-empty \
   docker stop
 
 docker run \
