@@ -53,6 +53,4 @@ RUN a2dissite 000-default
 
 RUN a2ensite seismo-client-apache
 
-USER seismo
-
 CMD [ "/home/seismo/run-seismo-client.sh" ]
