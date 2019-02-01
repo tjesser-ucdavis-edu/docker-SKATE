@@ -10,9 +10,9 @@ then
 fi
 
 docker ps \
-  --filter 'name=seismo-database-run' \
-  --filter 'name=seismo-server-run' \
-  --filter 'name=seismo-client-run' \
+  --filter 'name=seismo-database-inst' \
+  --filter 'name=seismo-server-inst' \
+  --filter 'name=seismo-client-inst' \
   --quiet \
 | xargs \
   --no-run-if-empty \
@@ -20,24 +20,24 @@ docker ps \
 
 docker run \
   --detach \
-  --name seismo-database-run \
+  --name seismo-database-inst \
   --network seismo-app \
   --rm \
   seismo-database
 
 docker run \
   --detach \
-  --name seismo-server-run \
+  --name seismo-server-inst \
   --network seismo-app \
   --rm \
   seismo-server
 
 docker run \
   --detach \
-  --name seismo-client-run \
+  --name seismo-client-inst \
   --network seismo-app \
   --publish 80:80 \
   --rm \
   seismo-client
 
-docker network connect bridge seismo-client-run
+docker network connect bridge seismo-client-inst
