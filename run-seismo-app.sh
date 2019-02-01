@@ -4,6 +4,11 @@ set -e
 set -v
 set -x
 
+if [ ! docker network inspect seismo-app ]
+then
+  docker network create seismo-app
+fi
+
 docker run \
   --detach \
   --name seismo-database-run \
