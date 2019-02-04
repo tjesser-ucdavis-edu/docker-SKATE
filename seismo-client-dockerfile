@@ -38,8 +38,6 @@ RUN chown --recursive 'seismo:seismo' '/home/seismo'
 
 USER seismo
 
-RUN patch 'seismogram-app/client/bower.json' 'patches/bower.json.patch'
-
 WORKDIR /home/seismo/seismogram-app/client
 
 RUN GIT_DIR='/home/seismo/seismogram-app/submodules/seismogram-app' \
