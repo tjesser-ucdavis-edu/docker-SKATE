@@ -6,7 +6,9 @@ set -x
 
 if ! docker network inspect seismo-app >/dev/null
 then
-  docker network create seismo-app
+  docker network create \
+  --internal \
+  seismo-app
 fi
 
 docker ps \
