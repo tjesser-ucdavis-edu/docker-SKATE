@@ -28,4 +28,4 @@ USER seismo
 
 RUN mkdir mongo-seismo
 
-CMD [ "mongod", "--dbpath", "/home/seismo/mongo-seismo" ]
+CMD [ "mongod", "--dbpath", "/home/seismo/mongo-seismo", "--bind_ip_all" ]
