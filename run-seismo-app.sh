@@ -31,6 +31,7 @@ docker run \
   --detach \
   --name seismo-server-inst \
   --network seismo-app \
+  --publish 3000:3000 \
   --rm \
   seismo-server
 
@@ -41,5 +42,7 @@ docker run \
   --publish 80:80 \
   --rm \
   seismo-client
+
+docker network connect bridge seismo-server-inst
 
 docker network connect bridge seismo-client-inst
