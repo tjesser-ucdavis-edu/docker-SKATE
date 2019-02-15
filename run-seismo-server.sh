@@ -2,7 +2,7 @@
 
 cd /home/seismo/seismogram-app/data-tools
 
-sh mongo-import.sh
+sh mongo-import.sh dev
 
 cd /home/seismo/seismogram-app/server
 
